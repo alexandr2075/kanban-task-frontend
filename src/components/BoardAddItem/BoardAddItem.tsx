@@ -54,6 +54,7 @@ const BoardAddItem: FC<ModalWindowFormProps> = props => {
       const existingTasks = ((await getAllTasks(currentBoard._id, props.columnId)) as TaskData[]).sort(
         (a, b) => a.order - b.order,
       );
+
       const newTask = await createTask(currentBoard._id, props.columnId, newTaskTitle, 'description', userId);
       dispatch(
         setColumnTaskData({

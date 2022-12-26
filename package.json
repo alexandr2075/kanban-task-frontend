@@ -2,7 +2,6 @@
   "name": "project-management-app",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "dependencies": {
     "@babel/core": "^7.20.2",
     "@babel/eslint-parser": "^7.19.1",

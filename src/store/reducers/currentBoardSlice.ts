@@ -23,8 +23,7 @@ export const currentBoardSlice = createSlice({
       state.currentBoard = action.payload;
     },
     setColumnTaskData(state, action: PayloadAction<UpdateColumnTasks>) {
-      const column = state.currentBoard?.columns?.find(column => column.id === action.payload.columnId);
-
+      const column = state.currentBoard?.columns?.find(column => column._id === action.payload.columnId);
       if (column) {
         column.tasks = action.payload.tasks;
       }
@@ -32,17 +31,17 @@ export const currentBoardSlice = createSlice({
     setDeleteColumn(state, action: PayloadAction<UpdateColumnTasks>) {
       const allColumns = state.currentBoard?.columns;
       const columnIndex = allColumns?.indexOf(
-        allColumns.find(column => column.id === action.payload.columnId) as ColumnData,
+        allColumns.find(column => column._id === action.payload.columnId) as ColumnData,
       );
       allColumns?.splice(columnIndex as number, 1);
     },
     setDeleteTask(state, action: PayloadAction<DeleteTask>) {
-      const allTasks = state.currentBoard?.columns?.find(column => column.id === action.payload.columnId)?.tasks;
-      const taskIndex = allTasks?.indexOf(allTasks.find(task => task.id === action.payload.taskId) as TaskData);
+      const allTasks = state.currentBoard?.columns?.find(column => column._id === action.payload.columnId)?.tasks;
+      const taskIndex = allTasks?.indexOf(allTasks.find(task => task._id === action.payload.taskId) as TaskData);
       allTasks?.splice(taskIndex as number, 1);
     },
     setColumn(state, action: PayloadAction<UpdateColumn>) {
-      const column = state.currentBoard?.columns?.find(column => column.id === action.payload.columnId);
+      const column = state.currentBoard?.columns?.find(column => column._id === action.payload.columnId);
 
       if (column) {
         column.title = action.payload.title;
