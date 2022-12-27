@@ -41,14 +41,14 @@ export interface BoardData {
 }
 
 export interface ColumnData {
-  id: string;
+  _id: string;
   title: string;
   order: number;
   tasks?: TaskData[];
 }
 
 export interface TaskData {
-  id: string;
+  _id: string;
   title: string;
   order: number;
   description: string;

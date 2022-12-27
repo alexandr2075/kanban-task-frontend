@@ -23,6 +23,7 @@ export const createColumn = async (boardId: string, title: string) => {
       `${ENDPOINT_URL}/boards/${boardId}/columns`,
       {
         title,
+        order: 1,
       },
       {
         headers: { Authorization: `Bearer ${getToken()}` },

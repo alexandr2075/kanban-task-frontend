@@ -45,7 +45,7 @@ const BoardColumn: FC<BoardColumnProps> = props => {
     accept: [ItemTypes.COLUMN, ItemTypes.TASK],
     drop(item: TaskData | ColumnData) {
       if (isTask(item)) {
-        const draggedTaskId: string | undefined = item.id;
+        const draggedTaskId: string | undefined = item._id;
         const draggedTaskColumnId: string | undefined = item.columnId;
         const columnToDropId: string | undefined = props.columnId;
 
@@ -55,10 +55,10 @@ const BoardColumn: FC<BoardColumnProps> = props => {
         }
       } else {
         if (currentBoard.columns) {
-          const draggedColumnId: string | undefined = item.id;
+          const draggedColumnId: string | undefined = item._id;
           const hoveredColumnId: string | undefined = props.columnId;
-          const draggedColumn = currentBoard.columns.find(column => column.id === draggedColumnId);
-          const hoveredColumn = currentBoard.columns.find(column => column.id === hoveredColumnId);
+          const draggedColumn = currentBoard.columns.find(column => column._id === draggedColumnId);
+          const hoveredColumn = currentBoard.columns.find(column => column._id === hoveredColumnId);
 
           if (draggedColumn && hoveredColumn) {
             const handleUpdateColumn = async (
@@ -73,12 +73,12 @@ const BoardColumn: FC<BoardColumnProps> = props => {
               );
               updatedColumns.forEach((col: ColumnData) => {
                 const updateTasks = async () => {
-                  const updatedTasks = ((await getAllTasks(currentBoard._id, col.id)) as TaskData[]).sort(
+                  const updatedTasks = ((await getAllTasks(currentBoard._id, col._id)) as TaskData[]).sort(
                     (a, b) => a.order - b.order,
                   );
                   dispatch(
                     setColumnTaskData({
-                      columnId: col.id,
+                      columnId: col._id,
                       tasks: updatedTasks,
                     }),
                   );
@@ -104,7 +104,7 @@ const BoardColumn: FC<BoardColumnProps> = props => {
       if (!ref.current) {
         return;
       }
-      const draggedColumnId: string | undefined = item.id;
+      const draggedColumnId: string | undefined = item._id;
       const hoveredColumnId: string | undefined = props.columnId;
 
       const hoveredRect: DOMRect | undefined = ref.current?.getBoundingClientRect();
@@ -120,7 +120,7 @@ const BoardColumn: FC<BoardColumnProps> = props => {
         }
       }
       if (!isTask(item)) {
-        item.id = hoveredColumnId;
+        item._id = hoveredColumnId;
       }
     },
   });
@@ -132,13 +132,13 @@ const BoardColumn: FC<BoardColumnProps> = props => {
     const getTasks = async (): Promise<void> => {
       if (currentBoard._id && draggedTaskColumnId) {
         const draggedTask = ((await getAllTasks(currentBoard._id, draggedTaskColumnId)) as TaskData[]).filter(
-          task => task.id === draggedTaskId,
+          task => task._id === draggedTaskId,
         );
         if (draggedTask[0]) {
           if (draggedTaskColumnId === columnToDropId && hoveredTaskId) {
             const getOrder = async (): Promise<void> => {
               const hoveredTask = ((await getAllTasks(currentBoard._id, draggedTaskColumnId)) as TaskData[]).find(
-                task => task.id === hoveredTaskId,
+                task => task._id === hoveredTaskId,
               );
               if (hoveredTask) {
                 swapTasks(draggedTask[0], draggedTaskColumnId, hoveredTask);
@@ -174,7 +174,7 @@ const BoardColumn: FC<BoardColumnProps> = props => {
       currentBoard._id,
       dragColumnIndex,
       columnToDropId,
-      draggedTask.id,
+      draggedTask._id,
       draggedTask.title,
       order,
       draggedTask.description,
@@ -200,7 +200,7 @@ const BoardColumn: FC<BoardColumnProps> = props => {
       currentBoard._id,
       draggedTaskColumnId,
       draggedTaskColumnId,
-      draggedTask.id,
+      draggedTask._id,
       draggedTask.title,
       hoveredTask.order,
       draggedTask.description,
@@ -210,7 +210,7 @@ const BoardColumn: FC<BoardColumnProps> = props => {
       currentBoard._id,
       draggedTaskColumnId,
       draggedTaskColumnId,
-      hoveredTask.id,
+      hoveredTask._id,
       hoveredTask.title,
       draggedTask.order,
       hoveredTask.description,
@@ -330,8 +330,8 @@ const BoardColumn: FC<BoardColumnProps> = props => {
           props.columnTasks.map((task: TaskData) => {
             return (
               <BoardTask
-                id={task.id}
-                key={task.id}
+                id={task._id}
+                key={task._id}
                 title={task.title}
                 columnId={task.columnId}
                 description={task.description}

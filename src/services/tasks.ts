@@ -50,6 +50,8 @@ export const createTask = async (
         title,
         description,
         userId,
+        order: 8,
+        users: [],
       },
       {
         headers: { Authorization: `Bearer ${getToken()}` },

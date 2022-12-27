@@ -74,8 +74,8 @@ const Board: FC = () => {
             currentBoard.columns?.map((column: ColumnData) => {
               return (
                 <BoardColumn
-                  key={column.id}
-                  columnId={column.id}
+                  key={column._id}
+                  columnId={column._id}
                   columnTitle={column.title}
                   columnOrder={column.order}
                   columnTasks={column.tasks as TaskData[]}

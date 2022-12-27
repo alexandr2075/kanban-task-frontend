@@ -49,7 +49,7 @@ const BoardTask: FC<BoardTaskProps> = ({
         return;
       }
 
-      const draggedTaskId: string | undefined = item.id;
+      const draggedTaskId: string | undefined = item._id;
       const hoveredTaskId: string | undefined = id;
 
       const hoveredRect: DOMRect = taskRef.current?.getBoundingClientRect();
