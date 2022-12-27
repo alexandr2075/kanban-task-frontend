@@ -85,7 +85,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve",
-    "build": "cross-env NODE_ENV=production webpack",
+    "build": "cross-env NODE_ENV=production webpack --omit=dev",
     "analyze": "cross-env NODE_ENV=production webpack --mode production --json > stats.json && webpack-bundle-analyzer stats.json build --report report.html --mode static -O",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,scss}\"",
     "lint": "eslint --fix \"src/**/*.{ts,tsx,js,jsx}\"",
