@@ -211,24 +211,22 @@ module.exports = {
             minifyJS: true,
           },
     }),
-    new ForkTsCheckerWebpackPlugin(
-    //   {
-    //   async: false,
-    //   logger: {
-    //     infrastructure: 'silent',
-    //     issues: 'webpack-infrastructure',
-    //     devServer: true,
-    //   },
-    //   typescript: {
-    //     configFile: '../tsconfig.json',
-    //     diagnosticOptions: {
-    //       semantic: true,
-    //       syntactic: true,
-    //     },
-    //     mode: 'write-references',
-    //   },
-    // }
-    ),
+    new ForkTsCheckerWebpackPlugin({
+      async: false,
+      logger: {
+        infrastructure: 'silent',
+        issues: 'webpack-infrastructure',
+        devServer: true,
+      },
+      typescript: {
+        configFile: '../tsconfig.json',
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+        mode: 'write-references',
+      },
+    }),
     new CopyPlugin({
       patterns: [
         {
