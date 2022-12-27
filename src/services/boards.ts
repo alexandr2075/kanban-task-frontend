@@ -73,7 +73,8 @@ export const updateBoard = async (id: string, title: string, description: string
       `${ENDPOINT_URL}/boards/${id}`,
       {
         title,
-        description,
+        owner: 'alex',
+        users: [],
       },
       {
         headers: { Authorization: `Bearer ${getToken()}` },
