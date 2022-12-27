@@ -43,7 +43,6 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "fork-ts-checker-webpack-plugin": "^7.2.13",
     "formik": "^2.2.9",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.2",
@@ -113,5 +112,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "fork-ts-checker-webpack-plugin": "^7.2.14"
   }
 }
