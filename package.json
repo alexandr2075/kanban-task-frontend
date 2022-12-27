@@ -73,9 +73,6 @@
     "sass-resources-loader": "^2.2.5",
     "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.6",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.8.4",
-    "typescript-plugin-css-modules": "^3.4.0",
     "web-vitals": "^2.1.4",
     "webpack": "^5.75.0",
     "webpack-bundle-analyzer": "^4.7.0",
@@ -114,6 +111,9 @@
     ]
   },
   "devDependencies": {
-    "fork-ts-checker-webpack-plugin": "^7.2.14"
+    "fork-ts-checker-webpack-plugin": "^7.2.14",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4",
+    "typescript-plugin-css-modules": "^3.4.0"
   }
 }
