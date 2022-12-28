@@ -214,7 +214,7 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin({
       async: false,
       logger: 'webpack-infrastructure',
-      issue: {},
+      devServer: true,
       typescript: {
         configFile: '../tsconfig.json',
         memoryLimit: 4096,
