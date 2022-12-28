@@ -219,7 +219,7 @@ module.exports = {
         devServer: true,
       },
       typescript: {
-        configFile: '../tsconfig.json',
+        configFile: './tsconfig.json',
         diagnosticOptions: {
           semantic: true,
           syntactic: true,
