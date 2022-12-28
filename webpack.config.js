@@ -216,6 +216,7 @@ module.exports = {
       logger: 'webpack-infrastructure',
       typescript: {
         configFile: '../tsconfig.json',
+        memoryLimit: 3048,
         diagnosticOptions: {
           semantic: true,
           syntactic: true,
