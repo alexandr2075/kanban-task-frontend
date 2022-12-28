@@ -39,7 +39,7 @@ module.exports = {
     historyApiFallback: true,
     hot: true,
     compress: true,
-    open: 'http://localhost:8080',
+    open: 'http://localhost:3000',
     client: {
       overlay: {
         warnings: true,
