@@ -217,7 +217,7 @@ module.exports = {
       issue: {},
       typescript: {
         configFile: '../tsconfig.json',
-        memoryLimit: 3048,
+        memoryLimit: 4096,
         diagnosticOptions: {
           semantic: true,
           syntactic: true,
