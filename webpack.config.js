@@ -215,11 +215,11 @@ module.exports = {
       async: false,
       logger: {
         infrastructure: 'silent',
-        issues: 'webpack-infrastructure',
+        issues: { log: 'console', error: 'console' },
         devServer: true,
       },
       typescript: {
-        configFile: './tsconfig.json',
+        configFile: '../tsconfig.json',
         diagnosticOptions: {
           semantic: true,
           syntactic: true,
