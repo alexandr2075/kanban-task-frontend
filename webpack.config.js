@@ -215,7 +215,7 @@ module.exports = {
       async: false,
       logger: {
         infrastructure: 'silent',
-        issues: { log: 'console', error: 'console' },
+        // issues: { log: 'console', error: 'console' },
         devServer: true,
       },
       typescript: {
