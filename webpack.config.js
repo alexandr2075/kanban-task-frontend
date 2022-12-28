@@ -213,11 +213,7 @@ module.exports = {
     }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
-      logger: {
-        infrastructure: 'silent',
-        issues: 'webpack-infrastructure',
-        devServer: true,
-      },
+      logger: 'webpack-infrastructure',
       typescript: {
         configFile: '../tsconfig.json',
         diagnosticOptions: {
