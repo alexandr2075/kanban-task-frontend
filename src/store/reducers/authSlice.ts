@@ -85,11 +85,13 @@ export const authSlice = createSlice({
   reducers: {
     restoreToken: state => {
       const token = localStorage.getItem('token') || '';
-      const { exp } = jwt_decode(token) as DecodedTokenData;
-      const timeNow = Math.round(+new Date() / 1000);
-      if (token && timeNow < exp) {
-        state.token = token;
-        state.isLogged = true;
+      if (token) {
+        const { exp } = jwt_decode(token) as DecodedTokenData;
+        const timeNow = Math.round(+new Date() / 1000);
+        if (token && timeNow < exp) {
+          state.token = token;
+          state.isLogged = true;
+        }
       }
     },
     setUserId: (state, action: PayloadAction<string>) => {
