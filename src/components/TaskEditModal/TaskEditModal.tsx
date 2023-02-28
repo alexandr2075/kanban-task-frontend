@@ -42,8 +42,8 @@ const TaskEditModal: FC<TaskEditModalProps> = ({ isActive, setIsActive, setTaskT
   useEffect(() => {
     if (usersData.length > 0 && taskData) {
       usersData.forEach(el => {
-        if (el.id === taskData.userId) {
-          setTaskUser(el.id);
+        if (el._id === taskData.userId) {
+          setTaskUser(el._id);
         }
       });
     }
@@ -103,7 +103,7 @@ const TaskEditModal: FC<TaskEditModalProps> = ({ isActive, setIsActive, setTaskT
               <select className={styles.select} value={taskUser} onChange={handleSelect}>
                 {usersData.map(el => {
                   return (
-                    <option key={el.id} value={el.id}>
+                    <option key={el._id} value={el._id}>
                       {el.login}
                     </option>
                   );

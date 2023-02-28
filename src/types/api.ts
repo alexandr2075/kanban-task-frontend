@@ -28,7 +28,7 @@ export interface UpdateResponse {
 }
 
 export interface UserData {
-  id: string;
+  _id: string;
   name: string;
   login: string;
 }

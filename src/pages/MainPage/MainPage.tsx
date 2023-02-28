@@ -102,6 +102,7 @@ const MainPage: FC = () => {
   };
 
   const handleSearch = async (searchCategory: string, searchVal: string) => {
+
     setPageState(prev => {
       return { ...prev, searchTasks: [], searchFlag: false, isSearching: true };
     });
@@ -136,6 +137,7 @@ const MainPage: FC = () => {
     if (isLogged) {
       setIsLoading(true);
       const getBoards = async (): Promise<void> => {
+
         const data = await getAllBoards();
         if (Array.isArray(data)) {
           dispatch(setBoards(data as BoardData[]));

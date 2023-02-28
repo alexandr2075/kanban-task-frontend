@@ -16,15 +16,18 @@ const UserSelect: FC<UserCallbackProps> = props => {
   const { t } = useTranslation();
 
   return (
+
     <Box sx={{ minWidth: 200, marginRight: 1 }}>
       <FormControl fullWidth size="small" sx={{ marginRight: '5px' }}>
         <Select value={category} sx={{ width: '250px' }} onChange={handleChange} displayEmpty>
-          <MenuItem value="" disabled>
+          <MenuItem value="" disabled key='choose'>
             {t('SEARCH_SELECT_OPTIONS.USER_SELECT')}
           </MenuItem>
+
           {props.userArray.length &&
             props.userArray.map(user => (
-              <MenuItem value={user.id} key={user.id}>
+
+              <MenuItem value={user._id} key={user._id}>
                 {user.login}
               </MenuItem>
             ))}
