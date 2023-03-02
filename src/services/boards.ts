@@ -39,6 +39,21 @@ export const createBoard = async (title: string, description: string, users: str
   }
 };
 
+export const getAllUserBoards = async (userId: string) => {
+  try {
+    const response = await axios.get<BoardData[]>(`${ENDPOINT_URL}/boardsSet/${userId}`, {
+      headers: { Authorization: `Bearer ${getToken()}` },
+    });
+    return response.data;
+  } catch (e) {
+    if (e instanceof Error) {
+      const error = e as AxiosError;
+      return error.response;
+    }
+  }
+
+};
+
 export const getBoard = async (id: string) => {
   try {
     const response = await axios.get<BoardData>(`${ENDPOINT_URL}/boards/${id}`, {

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import Button from '@mui/material/Button';
 import { BoardCreateModalProps } from './types';
-import { createBoard, getAllBoards } from '~/services/boards';
+import { createBoard, getAllBoards, getAllUserBoards } from "~/services/boards";
 import {useAppDispatch, useAppSelector} from '~/hooks/redux';
 import { setBoards } from '~/store/reducers/boardSlice';
 import { BoardData } from '~/types/api';
@@ -11,7 +11,7 @@ import { BoardData } from '~/types/api';
 import styles from './BoardCreateModal.module.scss';
 
 const BoardCreateModal: FC<BoardCreateModalProps> = ({ isActive, setIsActive }) => {
-  const { name } = useAppSelector(state => state.auth);
+  const { userId } = useAppSelector(state => state.auth);
   const modalRoot = document.getElementById('modal') as HTMLElement;
 
   const [boardTitle, setBoardTitle] = useState('');
@@ -32,10 +32,10 @@ const BoardCreateModal: FC<BoardCreateModalProps> = ({ isActive, setIsActive }) 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await createBoard(boardTitle, boardDescr, [name]);
-    const boards = (await getAllBoards()) as BoardData[];
+    await createBoard(boardTitle, boardDescr, [userId]);
+    const boards = await getAllUserBoards(userId);
+    if (boards) dispatch(setBoards(boards as BoardData[]));
 
-    dispatch(setBoards(boards));
     setBoardTitle('');
     setBoardDescr('');
     setIsActive(false);

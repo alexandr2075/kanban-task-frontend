@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '~/hooks/redux';
-import { deleteBoard, getAllBoards } from '~/services/boards';
+import {deleteBoard, getAllBoards, getAllUserBoards} from '~/services/boards';
 import { setBoards } from '~/store/reducers/boardSlice';
 import { getBoard } from '~/services/boards';
 import { setCurrentBoard } from '~/store/reducers/currentBoardSlice';
@@ -23,7 +23,7 @@ import styles from './MainPage.module.scss';
 
 const MainPage: FC = () => {
   const { boards } = useAppSelector(state => state.boards);
-  const { isLogged, error } = useAppSelector(state => state.auth);
+  const { isLogged, error, userId } = useAppSelector(state => state.auth);
   const [countArr, setCountArr] = useState<BoardData[]>([]);
   const [isModalActive, setIsModalActive] = useState(false);
   const [isEdited, setIsEdited] = useState(false);
@@ -137,8 +137,9 @@ const MainPage: FC = () => {
     if (isLogged) {
       setIsLoading(true);
       const getBoards = async (): Promise<void> => {
-
-        const data = await getAllBoards();
+        // debugger
+        const data = await getAllUserBoards(userId);
+        // const data = await getAllBoards();
         if (Array.isArray(data)) {
           dispatch(setBoards(data as BoardData[]));
           const arr = await Promise.all(data.map(async item => await getBoard(item._id)));
