@@ -15,7 +15,7 @@ const BoardCreateModal: FC<BoardCreateModalProps> = ({ isActive, setIsActive }) 
   const modalRoot = document.getElementById('modal') as HTMLElement;
 
   const [boardTitle, setBoardTitle] = useState('');
-  const [boardDescr, setBoardDescr] = useState('');
+  const [boardOwner, setBoardOwner] = useState('');
 
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -25,19 +25,19 @@ const BoardCreateModal: FC<BoardCreateModalProps> = ({ isActive, setIsActive }) 
     setBoardTitle(value);
   };
 
-  const updateDescr = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const updateOwner = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
-    setBoardDescr(value);
+    setBoardOwner(value);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await createBoard(boardTitle, boardDescr, [userId]);
+    await createBoard(boardTitle, boardOwner, [userId]);
     const boards = await getAllUserBoards(userId);
     if (boards) dispatch(setBoards(boards as BoardData[]));
 
     setBoardTitle('');
-    setBoardDescr('');
+    setBoardOwner('');
     setIsActive(false);
   };
 
@@ -58,12 +58,12 @@ const BoardCreateModal: FC<BoardCreateModalProps> = ({ isActive, setIsActive }) 
               />
             </label>
             <label className={styles.label}>
-              <span className={styles.labelText}>{t('CREATE_BOARD.DESCR')}</span>
+              <span className={styles.labelText}>{t('CREATE_BOARD.OWNER')}</span>
               <textarea
                 className={styles.textarea}
-                name="description"
-                onChange={e => updateDescr(e)}
-                value={boardDescr}
+                name="owner"
+                onChange={e => updateOwner(e)}
+                value={boardOwner}
                 rows={5}
                 required
               ></textarea>

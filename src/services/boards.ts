@@ -17,13 +17,13 @@ export const getAllBoards = async () => {
   }
 };
 
-export const createBoard = async (title: string, description: string, users: string[]) => {
+export const createBoard = async (title: string, owner: string, users: string[]) => {
   try {
     const response = await axios.post<BoardData>(
       `${ENDPOINT_URL}/boards`,
       {
         title,
-        description,
+        owner,
         users,
       },
       {

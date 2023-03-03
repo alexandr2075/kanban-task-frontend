@@ -89,7 +89,7 @@ const BoardColumn: FC<BoardColumnProps> = props => {
                 setCurrentBoard({
                   _id: currentBoard._id,
                   title: currentBoard.title,
-                  description: currentBoard.description,
+                  owner: currentBoard.owner,
                   columns: updatedColumns as ColumnData[],
                 }),
               );

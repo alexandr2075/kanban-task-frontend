@@ -36,7 +36,7 @@ export interface UserData {
 export interface BoardData {
   _id: string;
   title: string;
-  description: string;
+  owner: string;
   columns?: ColumnData[];
 }
 

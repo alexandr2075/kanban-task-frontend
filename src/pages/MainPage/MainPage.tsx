@@ -137,7 +137,6 @@ const MainPage: FC = () => {
     if (isLogged) {
       setIsLoading(true);
       const getBoards = async (): Promise<void> => {
-        // debugger
         const data = await getAllUserBoards(userId);
         // const data = await getAllBoards();
         if (Array.isArray(data)) {
@@ -187,10 +186,10 @@ const MainPage: FC = () => {
                             {board.title.length > 23 ? board.title.substring(0, 20) + '...' : board.title}
                           </li>
                           <li className={styles.listItemDescr}>
-                            {t('MAIN_ROUTE.BOARD_DESCR')}
-                            {board.description.length > 70
-                              ? board.description.substring(0, 67) + '...'
-                              : board.description}
+                            {t('MAIN_ROUTE.BOARD_OWNER')}
+                            {board.owner.length > 70
+                              ? board.owner.substring(0, 67) + '...'
+                              : board.owner}
                           </li>
                           <li className={styles.listItem}>
                             {t('MAIN_ROUTE.COLUMNS_COUNT')} {tasksCount(board).columns}

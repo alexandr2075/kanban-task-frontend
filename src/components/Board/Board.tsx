@@ -43,14 +43,14 @@ const Board: FC = () => {
           setCurrentBoard({
             _id: currentBoardId,
             title: currentBoard.title,
-            description: currentBoard.description,
+            owner: currentBoard.owner,
             columns: columns as ColumnData[],
           }),
         );
       }
     };
     getColumns();
-  }, [currentBoardId, currentBoard.title, dispatch, currentBoard.description]);
+  }, [currentBoardId, currentBoard.title, dispatch, currentBoard.owner]);
 
   useEffect(() => {
     if (error) {

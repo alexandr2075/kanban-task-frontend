@@ -34,7 +34,7 @@
   },
   "MAIN_ROUTE": {
     "CREATE_BOARD": "Create board",
-    "BOARD_DESCR": "Description: ",
+    "BOARD_OWNER": "Owner: ",
     "COLUMNS_COUNT": "Columns: ",
     "TASKS_COUNT": "Tasks: ",
     "TASK_TITLE": "Task title: ",
@@ -85,7 +85,7 @@
   },
   "CREATE_BOARD": {
     "TITLE": "Title:",
-    "DESCR": "Description:"
+    "OWNER": "Owner:"
   },
   "UPDATE_TASK": {
     "TITLE": "Title:",

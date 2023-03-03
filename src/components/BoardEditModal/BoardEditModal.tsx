@@ -13,16 +13,16 @@ const BoardEditModal: FC<BoardEditModalProps> = ({ isActive, setIsActive, boardI
   const modalRoot = document.getElementById('modal') as HTMLElement;
 
   const [boardTitle, setBoardTitle] = useState('');
-  const [boardDescr, setBoardDescr] = useState('');
+  const [boardOwner, setBoardOwner] = useState('');
 
   const { t } = useTranslation();
   const { currentBoard } = useAppSelector(state => state.currentBoard);
 
   const getBoardData = async (boardId: string) => {
     const currentBoardData = (await getBoard(boardId)) as BoardData;
-    const { title, description } = currentBoardData;
+    const { title, owner } = currentBoardData;
     setBoardTitle(title);
-    setBoardDescr(description);
+    setBoardOwner(owner);
   };
 
   useEffect(() => {
@@ -35,14 +35,14 @@ const BoardEditModal: FC<BoardEditModalProps> = ({ isActive, setIsActive, boardI
     setBoardTitle(value);
   };
 
-  const updateDescr = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const updateOwner = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
-    setBoardDescr(value);
+    setBoardOwner(value);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await updateBoard(currentBoard._id, boardTitle, boardDescr);
+    await updateBoard(currentBoard._id, boardTitle, boardOwner);
     setIsActive(false);
     setIsEdited(true);
   };
@@ -68,8 +68,8 @@ const BoardEditModal: FC<BoardEditModalProps> = ({ isActive, setIsActive, boardI
               <textarea
                 className={styles.textarea}
                 name="description"
-                onChange={e => updateDescr(e)}
-                value={boardDescr}
+                onChange={e => updateOwner(e)}
+                value={boardOwner}
                 rows={5}
                 required
               ></textarea>

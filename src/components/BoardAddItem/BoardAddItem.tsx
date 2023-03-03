@@ -42,7 +42,7 @@ const BoardAddItem: FC<ModalWindowFormProps> = props => {
       setCurrentBoard({
         _id: currentBoard._id,
         title: currentBoard.title,
-        description: currentBoard.description,
+        owner: currentBoard.owner,
         columns: [...(currentBoard.columns || []), data as ColumnData],
       }),
     );

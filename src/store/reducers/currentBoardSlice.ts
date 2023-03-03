@@ -10,7 +10,7 @@ const initialState: CurrentBoard = {
   currentBoard: {
     _id: '',
     title: '',
-    description: '',
+    owner: '',
     columns: [],
   },
 };
