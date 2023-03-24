@@ -1,4 +1,4 @@
-export const ENDPOINT_URL = 'https://kanban-task-backend-production.up.railway.app';
+export const ENDPOINT_URL = 'https://kanbanback-ubegemot.b4a.run/';
 
 export const ItemTypes = {
   TASK: 'task',
